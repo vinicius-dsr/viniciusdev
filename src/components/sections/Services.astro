@@ -1,0 +1,111 @@
+---
+import Button from "../ui/Button.astro";
+import Chevron from "../icons/Chevron.astro";
+
+const services = [
+  {
+    name: "Desenvolvimento Web",
+    description:
+      "Criação de sites, landing pages e aplicações web modernas, com foco em performance, responsividade e uma experiência de usuário bem construída.",
+  },
+  {
+    name: "Sistemas Personalizados",
+    description:
+      "Desenvolvimento de sistemas sob medida para automatizar processos, organizar operações e atender necessidades específicas de cada negócio.",
+  },
+  {
+    name: "Aplicações Full Stack",
+    description:
+      "Construção de aplicações completas, envolvendo frontend, backend, banco de dados, APIs e integrações necessárias para o funcionamento do projeto.",
+  },
+  {
+    name: "Integrações e Automações",
+    description:
+      "Desenvolvimento de integrações entre plataformas e automações para reduzir tarefas manuais e melhorar fluxos de trabalho.",
+  },
+  {
+    name: "Inteligência Artificial aplicada",
+    description:
+      "Implementação de recursos com IA e automações inteligentes, utilizando agentes, APIs e ferramentas modernas para otimizar processos e criar novas possibilidades",
+  },
+];
+---
+
+<section id="servicos" class="w-full">
+  <div class="max-w-7xl mx-auto md:px-0 px-5">
+    <div class="flex flex-col md:grid md:grid-cols-2 gap-10 py-10">
+      <div class="flex flex-col gap-4">
+        <h2 class="text-2xl font-medium">Serviços</h2>
+        <div class="flex flex-col gap-4">
+          <h3 class="text-xl md:text-3xl md:max-w-xl">
+            Desenvolvo aplicações e sistemas personalizados para empresas e
+            produtos digitais. Desde interfaces modernas até soluções completas
+            com backend e integrações, meu foco é criar softwares bem
+            estruturados, eficientes e preparados para crescer.
+          </h3>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+        {
+          services.map((service, index) => (
+            <div
+              data-accordion
+              class={`border-b border-b-muted/50 transition-colors ${index === 0 ? "" : ""}`}
+            >
+              <button
+                type="button"
+                data-accordion-toggle
+                class="w-full text-xl flex items-center justify-between gap-4 px-5 py-4 text-left font-medium"
+              >
+                {service.name}
+                <Chevron
+                  class={`w-5 h-5 shrink-0 transition-transform duration-300 ${index === 0 ? "rotate-180" : ""}`}
+                />
+              </button>
+              <div
+                data-accordion-panel
+                class={`grid transition-[grid-template-rows] duration-300 ease-out ${index === 0 ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+              >
+                <div class="overflow-hidden">
+                  <p class="px-5 pb-4 text-muted">{service.description}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <hr class="text-muted/30 mt-16" />
+  </div>
+</section>
+
+<script>
+  const toggles = document.querySelectorAll("[data-accordion-toggle]");
+
+  toggles.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest("[data-accordion]");
+      const panel = item.querySelector("[data-accordion-panel]");
+      const chevron = item.querySelector("svg");
+      const isOpen = panel.classList.contains("grid-rows-[1fr]");
+
+      document.querySelectorAll("[data-accordion]").forEach((other) => {
+        other.classList.remove("bg-muted/10");
+        other
+          .querySelector("[data-accordion-panel]")
+          .classList.remove("grid-rows-[1fr]");
+        other
+          .querySelector("[data-accordion-panel]")
+          .classList.add("grid-rows-[0fr]");
+        other.querySelector("svg").classList.remove("rotate-180");
+      });
+
+      if (!isOpen) {
+        item.classList.add("bg-background");
+        panel.classList.remove("grid-rows-[0fr]");
+        panel.classList.add("grid-rows-[1fr]");
+        chevron.classList.add("rotate-180");
+      }
+    });
+  });
+</script>
