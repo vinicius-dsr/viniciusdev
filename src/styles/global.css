@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --color-background: rgb(25, 32, 33);
+  --color-primary: rgb(68 90 96);
+  --color-text: rgb(188 215 222);
+  --color-muted: rgb(98 106 108);
+}

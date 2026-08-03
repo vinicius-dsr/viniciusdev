@@ -1,4 +1,6 @@
 ---
+import Button from "./ui/Button.astro";
+
 const navLinks = [
   { name: "Sobre", href: "/#sobre" },
   { name: "Serviços", href: "/#servicos" },
@@ -15,6 +17,7 @@ const navLinks = [
           return <a href={links.href}>{links.name}</a>;
         })
       }
+      <Button href="" variant="primary">Contato</Button>
     </nav>
   </div>
 </header>
