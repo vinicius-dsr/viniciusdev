@@ -1,12 +1,96 @@
+---
+import { socialLinks } from "../data/socialLinks";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const {
+  title = "Vinícius Reis | Desenvolvedor Full Stack",
+  description = "Vinícius Reis — Desenvolvedor Full Stack especializado em aplicações web modernas, sistemas personalizados e design de interfaces. Freelancer em Paragominas, Pará, Brasil.",
+  ogImage = "https://viniciusdev.site/og-image.png",
+  canonical = "https://viniciusdev.site/",
+} = Astro.props;
+
+const website = "https://viniciusdev.site";
+
+const structuredData = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${website}/#website`,
+      url: website,
+      name: "Vinícius Reis",
+      description,
+      inLanguage: "pt-BR",
+    },
+    {
+      "@type": "Person",
+      "@id": `${website}/#person`,
+      name: "Vinícius Reis",
+      url: website,
+      image: `${website}/avatar.png`,
+      jobTitle: "Desenvolvedor Full Stack",
+      sameAs: socialLinks.map((link) => link.href),
+      address: {
+        "@type": "PostalAddress",
+        addressRegion: "Pará",
+        addressCountry: "BR",
+      },
+      worksFor: {
+        "@type": "Organization",
+        name: "Vinícius Reis",
+      },
+    },
+  ],
+});
+---
+
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>Vinícius Reis - Full Stack</title>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="Desenvolvedor Full Stack, Freelancer, Aplicações Web, Sistemas Personalizados, UI/UX, Vinícius Reis, Paragominas, Pará"
+    />
+    <meta name="author" content="Vinícius Reis" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#191F21" />
+    <link rel="canonical" href={canonical} />
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Vinícius Reis" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script
+      type="application/ld+json"
+      set:html={structuredData}
+      is:inline
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,3 +102,8 @@
     <slot />
   </body>
 </html>
+
+<script>
+  import { inject } from "@vercel/analytics";
+  inject();
+</script>

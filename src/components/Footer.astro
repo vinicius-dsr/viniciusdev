@@ -6,10 +6,16 @@ import { socialLinks } from "../data/socialLinks";
 const year = new Date().getFullYear();
 ---
 
-<footer class="w-full border-t border-text/20">
+<footer class="w-full">
+  <div
+    class="w-full h-px bg-gradient-to-r from-transparent via-text/25 to-transparent"
+  >
+  </div>
   <div class="max-w-7xl mx-auto px-5 md:px-0 py-10 flex flex-col gap-8">
-    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-      <a href="" class="flex flex-col items-start">
+    <div
+      class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+    >
+      <a href="/" class="flex flex-col items-start">
         <span class="text-xl font-semibold">Vinícius Reis</span>
         <span class="text-sm text-muted font-medium">Pará, Brasil</span>
       </a>
@@ -30,7 +36,9 @@ const year = new Date().getFullYear();
         }
       </div>
     </div>
-    <div class="border-t border-text/20 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div
+      class="pt-6 flex flex-col md:flex-row items-center justify-between gap-4"
+    >
       <span class="text-sm text-muted">
         © {year} Vinícius Reis. Todos os direitos reservados.
       </span>
@@ -40,7 +48,14 @@ const year = new Date().getFullYear();
         title="Voltar ao topo"
         class="group w-10 h-10 flex items-center justify-center border border-text/20 rounded-full text-muted transition-all hover:bg-primary hover:text-text hover:border-primary"
       >
-        <Arrow class="w-5 h-5 -rotate-90 transition-transform group-hover:-rotate-0" />
+        <span class="relative w-5 h-5 overflow-hidden">
+          <Arrow
+            class="absolute inset-0 w-5 h-5 -rotate-90 transition-transform duration-300 ease-out group-hover:-translate-y-full"
+          />
+          <Arrow
+            class="absolute inset-0 w-5 h-5 -rotate-90 translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0"
+          />
+        </span>
       </a>
     </div>
   </div>
