@@ -1,0 +1,20 @@
+---
+const navLinks = [
+  { name: "Sobre", href: "/#sobre" },
+  { name: "Serviços", href: "/#servicos" },
+  { name: "Projetos", href: "/#projetos" },
+];
+---
+
+<header class="w-full">
+  <div class="max-w-5xl mx-auto h-auto flex items-center justify-between py-6">
+    <a href="">logo</a>
+    <nav class="flex items-center gap-8">
+      {
+        navLinks.map((links) => {
+          return <a href={links.href}>{links.name}</a>;
+        })
+      }
+    </nav>
+  </div>
+</header>
