@@ -1,4 +1,5 @@
 ---
+import Arrow from "./icons/Arrow.astro";
 import Button from "./ui/Button.astro";
 
 const navLinks = [
@@ -10,14 +11,28 @@ const navLinks = [
 
 <header class="w-full">
   <div class="max-w-5xl mx-auto h-auto flex items-center justify-between py-6">
-    <a href="">logo</a>
+    <a href="" class="flex flex-col items-start">
+      <span class="text-xl font-semibold">Vinícius Reis</span>
+      <span class="text-sm text-muted font-medium">Pará, Brasil</span>
+    </a>
     <nav class="flex items-center gap-8">
       {
         navLinks.map((links) => {
-          return <a href={links.href}>{links.name}</a>;
+          return (
+            <a
+              href={links.href}
+              class="font-medium transition-all hover:text-muted"
+            >
+              {links.name}
+            </a>
+          );
         })
       }
-      <Button href="" variant="primary">Contato</Button>
+      <Button href="" variant="primary" class="group flex items-center gap-2" }
+        >Contato <Arrow
+          class="w-6 p-0 h-auto group-hover:-rotate-45 transition-transform"
+        /></Button
+      >
     </nav>
   </div>
 </header>
