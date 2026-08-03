@@ -1,0 +1,38 @@
+---
+const heroBadges = [
+  { name: "DevOps" },
+  { name: "Full Stack" },
+  { name: "UI/UX Designer" },
+];
+---
+
+<section class="w-full">
+  <div
+    class="py-12 flex flex-col justify-between max-w-7xl mx-auto min-h-[80vh] border-b-muted"
+  >
+    <div class="flex flex-col gap-2">
+      <span class="text-muted">Olá 👋</span>
+      <h1 class="text-6xl max-w-xl">
+        Dando vida a produtos digitais com design visual refinado.
+      </h1>
+    </div>
+    <div class="flex justify-between items-center">
+      <div class="flex gap-2 items-center">
+        {
+          heroBadges.map((badges) => {
+            return (
+              <span class="bg-muted/20 px-4 py-2 rounded-full text-sm">
+                {badges.name}
+              </span>
+            );
+          })
+        }
+      </div>
+      <p class="max-w-2xl">
+        Sou desenvolvedor de software especializado na criação de aplicações web
+        e sistemas modernos. Desenvolvo soluções com foco em desempenho,
+        qualidade de código e boas experiências para os usuários.
+      </p>
+    </div>
+  </div>
+</section>
