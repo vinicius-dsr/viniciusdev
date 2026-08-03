@@ -1,0 +1,145 @@
+---
+import Icon from "../icons/Icon.astro";
+import { skills } from "../../data/skills";
+---
+
+<section id="sobre" class="w-full">
+  <div class="max-w-7xl mx-auto flex flex-col gap-8 md:px-0 px-5">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div class="w-full">
+        <img
+          src="/foto-vinicius.webp"
+          alt="Foto de Vinícius Reis, Desenvolvedor Full Stack"
+          class="w-full h-auto rounded-2xl"
+        />
+      </div>
+      <div class="flex flex-col gap-6">
+        <span class="text-xl font-medium">Sobre mim</span>
+        <div class="inline-flex w-fit bg-muted/20 rounded-full p-1 gap-1">
+          <button
+            data-tab="sobre"
+            class="px-4 py-2 rounded-full text-sm font-medium bg-primary text-text transition-all"
+          >
+            Sobre mim
+          </button>
+          <button
+            data-tab="habilidades"
+            class="px-4 py-2 rounded-full text-sm font-medium text-muted transition-all hover:text-text"
+          >
+            Minhas habilidades
+          </button>
+          <button
+            data-tab="ia"
+            class="px-4 py-2 rounded-full text-sm font-medium text-muted transition-all hover:text-text"
+          >
+            IA no desenvolvimento
+          </button>
+        </div>
+        <div data-panel="sobre">
+          <h3 class="text-2xl font-medium mb-4">
+            Desenvolvedor Full Stack e apaixonado por tecnologia
+          </h3>
+          <p class="leading-loose text-justify">
+            Sou desenvolvedor de software com foco na criação de aplicações web
+            e sistemas personalizados. Gosto de transformar problemas em
+            soluções bem estruturadas, unindo tecnologia, boas práticas de
+            desenvolvimento e atenção aos detalhes. <br />
+            <br />
+
+            Tenho experiência no desenvolvimento Full Stack, trabalhando desde a
+            construção de interfaces modernas até a criação de APIs, integrações
+            e arquiteturas de sistemas. Busco sempre escrever código limpo,
+            eficiente e fácil de manter, utilizando as ferramentas certas para
+            cada projeto. <br />
+            <br />
+
+            Também utilizo inteligência artificial como parte do meu processo de
+            desenvolvimento, aplicando agentes e ferramentas de IA para aumentar
+            a produtividade, melhorar a qualidade das entregas e explorar novas
+            formas de construir software.
+          </p>
+        </div>
+        <div data-panel="habilidades" class="hidden">
+          <h3 class="text-2xl font-medium mb-4">
+            Especializado nas principais tecnologias disponíveis no mercado.
+          </h3>
+          <div class="flex flex-wrap items-center gap-3">
+            {
+              skills.map((skill) => (
+                <div class="border border-text/20 rounded-xl p-4 flex flex-col items-center gap-2 transition-all hover:bg-muted/10">
+                  <Icon name={skill.icon} class="w-7 h-7" />
+                  <span class="text-sm">{skill.name}</span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div data-panel="ia" class="hidden">
+          <h3 class="text-2xl font-medium mb-4">
+            Engenharia de Software com IA
+          </h3>
+          <p>
+            Utilizo ferramentas de inteligência artificial no processo de
+            desenvolvimento para acelerar entregas, melhorar a qualidade do
+            código e automatizar tarefas. Tenho experiência com agentes de IA,
+            fluxos de trabalho automatizados e ferramentas como Claude Code e
+            Codex para análise, implementação, refatoração e documentação de
+            aplicações.
+          </p>
+          <div class="grid md:grid-cols-2 gap-6 mt-6">
+            <div class="flex flex-col gap-3">
+              <h4 class="font-medium">IA aplicada ao desenvolvimento</h4>
+              <ul
+                class="flex flex-col gap-2 text-muted list-disc marker:text-primary pl-5"
+              >
+                <li>Agentes de IA e automação de tarefas</li>
+                <li>Desenvolvimento assistido por IA (AI-assisted coding)</li>
+                <li>Engenharia de prompts para desenvolvimento</li>
+                <li>Revisão e refatoração de código com IA</li>
+                <li>Geração e manutenção de documentação técnica</li>
+                <li>Criação de workflows com agentes</li>
+              </ul>
+            </div>
+            <div class="flex flex-col gap-3">
+              <h4 class="font-medium">Ferramentas</h4>
+              <ul
+                class="flex flex-col gap-2 text-muted list-disc marker:text-primary pl-5"
+              >
+                <li>Claude Code</li>
+                <li>OpenAI Codex</li>
+                <li>ChatGPT</li>
+                <li>GitHub Copilot</li>
+                <li>Modelos locais (quando aplicável)</li>
+                <li>MCP (Model Context Protocol)</li>
+                <li>Skills e agentes personalizados</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="text-muted/40 mt-10" />
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll("[data-tab]");
+  const panels = document.querySelectorAll("[data-panel]");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => {
+        const active = t === tab;
+        t.classList.toggle("bg-primary", active);
+        t.classList.toggle("text-text", active);
+        t.classList.toggle("text-muted", !active);
+      });
+      panels.forEach((panel) => {
+        panel.classList.toggle(
+          "hidden",
+          panel.dataset.panel !== tab.dataset.tab,
+        );
+      });
+    });
+  });
+</script>
