@@ -1,6 +1,21 @@
 ---
 import Arrow from "../icons/Arrow.astro";
 import Button from "../ui/Button.astro";
+
+const projects = [
+  { name: "Vorthal", stack: "Full Stack", imageUrl: "/vorthal.png" },
+  { name: "Froz Advogados", stack: "Full Stack", imageUrl: "/froz.png" },
+  {
+    name: "Mise en Place",
+    stack: "Full Stack",
+    imageUrl: "/mise-en-place.avif",
+  },
+  {
+    name: "Quilombo Santa Rosa",
+    stack: "Full Stack",
+    imageUrl: "/quilombo.avif",
+  },
+];
 ---
 
 <section class="w-full">
@@ -13,6 +28,26 @@ import Button from "../ui/Button.astro";
         />
       </Button>
     </div>
-    <div></div>
+    <!-- grid de cards -->
+    <div class="grid md:grid-cols-2 gap-8">
+      {
+        projects.map((project) => (
+          <div
+            class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-center bg-cover group-hover:bg-contain group transition-[background-size] duration-500"
+            style={`background-image: url('${project.imageUrl}')`}
+          >
+            <div class="absolute inset-0 bg-background/50 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div class="absolute inset-x-0 top-0 p-4 flex justify-between opacity-0 group-hover:opacity-100 transition-opacity">
+              <span class="bg-muted/75 px-4 py-2 rounded-full text-sm">
+                {project.name}
+              </span>
+              <span class="bg-muted/75 px-4 py-2 rounded-full text-sm">
+                {project.stack}
+              </span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>
