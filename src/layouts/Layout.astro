@@ -1,4 +1,5 @@
 ---
+import Analytics from "@vercel/analytics/astro";
 import { socialLinks } from "../data/socialLinks";
 
 interface Props {
@@ -96,10 +97,6 @@ const structuredData = JSON.stringify({
   </head>
   <body class="bg-background text-text">
     <slot />
+    <Analytics />
   </body>
 </html>
-
-<script>
-  import { inject } from "@vercel/analytics";
-  inject();
-</script>
