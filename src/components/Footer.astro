@@ -1,0 +1,47 @@
+---
+import Arrow from "./icons/Arrow.astro";
+import Icon from "./icons/Icon.astro";
+import { socialLinks } from "../data/socialLinks";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="w-full border-t border-text/20">
+  <div class="max-w-7xl mx-auto px-5 md:px-0 py-10 flex flex-col gap-8">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <a href="" class="flex flex-col items-start">
+        <span class="text-xl font-semibold">Vinícius Reis</span>
+        <span class="text-sm text-muted font-medium">Pará, Brasil</span>
+      </a>
+      <div class="flex items-center gap-3">
+        {
+          socialLinks.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.name}
+              title={link.name}
+              class="w-10 h-10 flex items-center justify-center border border-text/20 rounded-full text-muted transition-all hover:bg-primary hover:text-text hover:border-primary"
+            >
+              <Icon name={link.icon} class="w-5 h-5" />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <div class="border-t border-text/20 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <span class="text-sm text-muted">
+        © {year} Vinícius Reis. Todos os direitos reservados.
+      </span>
+      <a
+        href="#"
+        aria-label="Voltar ao topo"
+        title="Voltar ao topo"
+        class="group w-10 h-10 flex items-center justify-center border border-text/20 rounded-full text-muted transition-all hover:bg-primary hover:text-text hover:border-primary"
+      >
+        <Arrow class="w-5 h-5 -rotate-90 transition-transform group-hover:-rotate-0" />
+      </a>
+    </div>
+  </div>
+</footer>
