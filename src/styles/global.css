@@ -4,6 +4,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: "DM Sans", sans-serif;
+}
+
 @theme {
   --color-background: rgb(25, 32, 33);
   --color-primary: rgb(68 90 96);
