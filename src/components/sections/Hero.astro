@@ -11,9 +11,18 @@ const heroBadges = [
     class="flex flex-col gap-10 md:justify-between md:px-0 px-5 md:max-w-7xl mx-auto md:min-h-[80vh]"
   >
     <div class="py-16 flex flex-col gap-2">
-      <span class="text-muted">Olá 👋</span>
-      <h1 class="text-4xl md:text-6xl max-w-full md:max-w-xl">
-        Dando vida a produtos digitais com design visual refinado.
+      <span class="flex items-center gap-2 font-medium">
+        <img
+          src="/avatar.png"
+          class="w-10 h-auto rounded-full shadow-lg mr-2"
+        />
+        <span id="saudacao"></span>
+        <span class="emoji-wave">👋</span>
+      </span>
+      <h1 class="text-4xl md:text-5xl max-w-full md:max-w-3xl">
+        <!-- Dando vida a produtos digitais com design visual refinado. -->
+        Desenvolvo aplicações web modernas e sistemas personalizados para resolver
+        problemas reais.
       </h1>
     </div>
     <div
@@ -39,3 +48,61 @@ const heroBadges = [
     <hr class="text-muted/40" />
   </div>
 </section>
+
+<script>
+  const saudacao = document.getElementById("saudacao");
+  const hora = new Date().getHours();
+
+  let mensagem;
+  switch (true) {
+    case hora >= 5 && hora < 12:
+      mensagem = "Olá, Bom dia";
+      break;
+    case hora >= 12 && hora < 18:
+      mensagem = "Olá, Boa tarde";
+      break;
+    default:
+      mensagem = "Olá, Boa noite";
+  }
+
+  saudacao.textContent = mensagem;
+</script>
+
+<style>
+  .emoji-wave {
+    display: inline-block;
+    animation: wave 2.5s ease-in-out infinite;
+    transform-origin: 70% 70%;
+  }
+
+  @keyframes wave {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+    30% {
+      transform: rotate(14deg);
+    }
+    40% {
+      transform: rotate(-4deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .emoji-wave {
+      animation: none;
+    }
+  }
+</style>
