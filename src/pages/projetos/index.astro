@@ -1,23 +1,11 @@
 ---
-import Arrow from "../icons/Arrow.astro";
-import Button from "../ui/Button.astro";
+import Layout from "../../layouts/Layout.astro";
 import { projects } from "../../data/projectList";
 ---
 
-<section id="projetos" class="w-full">
-  <div class="max-w-7xl pb-20 mx-auto flex flex-col gap-8 md:px-0 px-5">
-    <div class="flex items-center justify-between">
-      <h2 class="text-2xl font-medium">Projetos Selecionados</h2>
-      <Button
-        variant="primary"
-        href="/projetos"
-        class="group hidden md:flex items-center gap-2"
-        >Ver todos projetos<Arrow
-          class="w-6 p-0 h-auto group-hover:-rotate-45 transition-transform"
-        />
-      </Button>
-    </div>
-    <!-- grid de cards -->
+<Layout title="Vinícius Reis | Projetos">
+  <div class="max-w-7xl mx-auto flex flex-col gap-8 py-20 md:px-0 px-5">
+    <h2 class="text-3xl font-medium">Meus Projetos</h2>
     <div class="grid md:grid-cols-2 gap-8">
       {
         projects.map((project) => (
@@ -46,7 +34,7 @@ import { projects } from "../../data/projectList";
       }
     </div>
   </div>
-</section>
+</Layout>
 
 <script>
   const cards = document.querySelectorAll("[data-project-card]");
