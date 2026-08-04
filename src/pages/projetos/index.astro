@@ -2,10 +2,20 @@
 import Layout from "../../layouts/Layout.astro";
 import { projects } from "../../data/projectList";
 import ArrowUpRight from "../../components/icons/ArrowUpRight.astro";
+import ArrowLeft from "../../components/icons/ArrowLeft.astro";
 ---
 
 <Layout title="Vinícius Reis | Projetos">
-  <div class="max-w-7xl mx-auto flex flex-col gap-8 py-20 md:px-0 px-5">
+  <div class="max-w-7xl mx-auto flex flex-col gap-8 pb-17 pt-8 md:px-0 px-5">
+    <a
+      href="/"
+      class="flex items-center gap-2 transition-all hover:text-primary"
+      ><ArrowLeft class="w-6 h-auto" /> Voltar</a
+    >
+    <div
+      class="w-full h-px bg-gradient-to-r from-transparent via-text/25 to-transparent"
+    >
+    </div>
     <h2 class="text-3xl font-medium">Meus Projetos</h2>
     <div class="grid md:grid-cols-2 gap-8">
       {

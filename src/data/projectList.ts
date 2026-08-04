@@ -1,5 +1,10 @@
 export const projects = [
-  { name: "Vorthal", slug: "", stack: "Full Stack", imageUrl: "/vorthal.png" },
+  {
+    name: "Vorthal",
+    slug: "vorthal",
+    stack: "Full Stack",
+    imageUrl: "/vorthal.png",
+  },
   {
     name: "Froz Advogados",
     slug: "froz-advogados",
@@ -8,14 +13,14 @@ export const projects = [
   },
   {
     name: "Mise en Place",
-    slug: "",
-    stack: "Full Stack",
+    slug: "mise-en-place",
+    stack: "Front-end",
     imageUrl: "/mise-en-place.avif",
   },
   {
     name: "Quilombo Santa Rosa",
-    slug: "",
-    stack: "Full Stack",
+    slug: "quilombo-santa-rosa",
+    stack: "Front-end",
     imageUrl: "/quilombo.avif",
   },
 ];

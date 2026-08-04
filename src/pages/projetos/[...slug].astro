@@ -1,4 +1,6 @@
 ---
+import ArrowDownRight from "../../components/icons/ArrowDownRight.astro";
+import ArrowLeft from "../../components/icons/ArrowLeft.astro";
 import { projectDetails } from "../../data/projectDetails";
 import Layout from "../../layouts/Layout.astro";
 
@@ -12,6 +14,8 @@ export async function getStaticPaths() {
       links,
       tag,
       date,
+      local,
+      duration,
       techs,
       details,
     }) => {
@@ -24,6 +28,8 @@ export async function getStaticPaths() {
           links,
           tag,
           date,
+          local,
+          duration,
           techs,
           details,
         },
@@ -32,9 +38,104 @@ export async function getStaticPaths() {
   );
 }
 
-const { name, description, imageURL, tag, date, techs, details } = Astro.props;
+const {
+  name,
+  description,
+  imageURL,
+  tag,
+  date,
+  local,
+  duration,
+  techs,
+  details,
+} = Astro.props;
 ---
 
 <Layout title={name}>
-  <h2>{name}</h2>
+  <main class="w-full py-8 pb-16">
+    <div class="md:px-0 px-5 max-w-7xl mx-auto flex flex-col gap-8">
+      <a
+        href="/projetos"
+        class="flex items-center gap-2 transition-all hover:text-primary"
+        ><ArrowLeft class="w-6 h-auto" /> Voltar</a
+      >
+      <div
+        class="w-full h-px bg-gradient-to-r from-transparent via-text/25 to-transparent"
+      >
+      </div>
+      <div
+        class="flex md:flex-row gap-6 md:items-center flex-col md:justify-between"
+      >
+        <div class="flex flex-col gap-4">
+          <h2 class="md:text-2xl text-xl">{name} - {tag}</h2>
+          <p class="md:text-3xl text-2xl font-medium max-w-2xl">
+            {description}
+          </p>
+        </div>
+        <div
+          class="flex md:text-xl text-lg md:itens-center flex-col gap-4 text-end"
+        >
+          <div class="flex flex-col md:w-[250px] gap-4">
+            <div
+              class="flex justify-between border-b border-b-muted/40 pb-3 px-2"
+            >
+              <span>Local:</span>
+              <span>{local}</span>
+            </div>
+            <div
+              class="flex justify-between border-b border-b-muted/40 pb-3 px-2"
+            >
+              <span>Duração:</span>
+              <span>{duration}</span>
+            </div>
+            <div class="flex justify-between pb-3 px-2">
+              <span>Ano:</span>
+              <span>{date}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {
+        imageURL?.length > 0 && (
+          <img
+            src={imageURL[0].href}
+            alt={imageURL[0].name}
+            class="rounded-xl"
+          />
+        )
+      }
+      <div class="flex flex-col gap-4">
+        <h3 class="text-2xl font-medium">Sobre o projeto</h3>
+        <div class="flex flex-col gap-2">
+          <h3 class="text-xl font-medium">{details[0].name}</h3>
+          <p class="mb-5 text-justify">{details[0].content}</p>
+
+          <h3 class="text-xl font-medium">{details[1].name}</h3>
+          <p class="mb-5 text-justify">{details[1].content}</p>
+
+          <h3 class="text-xl font-medium">{details[2].name}</h3>
+          <p class="mb-5 text-justify">{details[2].content}</p>
+        </div>
+      </div>
+      <div
+        class="w-full h-px bg-gradient-to-r from-transparent via-text/25 to-transparent"
+      >
+      </div>
+      <div class="flex flex-col gap-9">
+        <div class="flex items-center justify-between">
+          <h2 class="text-3xl font-medium">Resultando final</h2>
+          <ArrowDownRight class="w-8 h-auto" />
+        </div>
+        <div class="flex flex-col gap-8">
+          {
+            imageURL.slice(1).map((image) => {
+              return (
+                <img src={image.href} alt={image.name} class="rounded-xl" />
+              );
+            })
+          }
+        </div>
+      </div>
+    </div>
+  </main>
 </Layout>
