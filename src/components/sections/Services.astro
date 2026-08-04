@@ -1,6 +1,7 @@
 ---
 import Button from "../ui/Button.astro";
 import Chevron from "../icons/Chevron.astro";
+import ArrowDownLeft from "../icons/ArrowDownLeft.astro";
 
 const services = [
   {
@@ -58,7 +59,7 @@ const services = [
                 class="w-full text-xl flex items-center justify-between gap-4 px-5 py-4 text-left font-medium"
               >
                 {service.name}
-                <Chevron
+                <ArrowDownLeft
                   class={`w-5 h-5 shrink-0 transition-transform duration-300 ${index === 0 ? "rotate-180" : ""}`}
                 />
               </button>
