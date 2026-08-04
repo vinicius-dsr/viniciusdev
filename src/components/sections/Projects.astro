@@ -2,6 +2,7 @@
 import Arrow from "../icons/Arrow.astro";
 import Button from "../ui/Button.astro";
 import { projects } from "../../data/projectList";
+import ArrowUpRight from "../icons/ArrowUpRight.astro";
 ---
 
 <section id="projetos" class="w-full">
@@ -21,7 +22,8 @@ import { projects } from "../../data/projectList";
     <div class="grid md:grid-cols-2 gap-8">
       {
         projects.map((project) => (
-          <div
+          <a
+            href={`projetos/${project.slug}`}
             data-project-card
             class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-center bg-cover group-hover:bg-contain group cursor-none transition-[background-size] duration-500"
             style={`background-image: url('${project.imageUrl}')`}
@@ -37,11 +39,11 @@ import { projects } from "../../data/projectList";
             </div>
             <span
               data-bubble
-              class="absolute z-10 -translate-x-1/2 -translate-y-1/2 border border-text bg-muted/75 px-6 py-3 rounded-full text-sm opacity-0 scale-0 pointer-events-none transition-all duration-300 ease-out"
+              class="absolute z-10 -translate-x-1/2 -translate-y-1/2  bg-muted/75 p-4 rounded-full text-sm opacity-0 scale-0 pointer-events-none transition-all duration-300 ease-out"
             >
-              EM BREVE
+              <ArrowUpRight class="w-8 h-auto" />
             </span>
-          </div>
+          </a>
         ))
       }
     </div>

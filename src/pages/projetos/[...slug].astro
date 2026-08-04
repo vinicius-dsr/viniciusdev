@@ -1,0 +1,40 @@
+---
+import { projectDetails } from "../../data/projectDetails";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  return projectDetails.map(
+    ({
+      slug,
+      name,
+      description,
+      imageURL,
+      links,
+      tag,
+      date,
+      techs,
+      details,
+    }) => {
+      return {
+        params: { slug },
+        props: {
+          name,
+          description,
+          imageURL,
+          links,
+          tag,
+          date,
+          techs,
+          details,
+        },
+      };
+    },
+  );
+}
+
+const { name, description, imageURL, tag, date, techs, details } = Astro.props;
+---
+
+<Layout title={name}>
+  <h2>{name}</h2>
+</Layout>
