@@ -28,7 +28,7 @@ export const projectDetails = [
       },
     ],
     description:
-      "Design e desenvolvimento de sistema PDV/ERP multi-segmento, com versões web, desktop em produção (Electron) e rebuild em Tauri + Rust.",
+      "Design e desenvolvimento de sistema PDV/ERP multi-segmento completo, com aplicativo desktop (Tauri + Rust) e plataforma web SaaS com sincronização na nuvem e gestão por inquilinos.",
     tag: "Full Stack",
     date: "2026",
     local: "Brasil 🇧🇷",
@@ -53,17 +53,17 @@ export const projectDetails = [
       {
         name: "Contexto",
         content:
-          "O Vorthal One é um sistema PDV/ERP completo que se adapta ao segmento do cliente — mercado, farmácia, roupas, hortifrúti, autopeças, construção, pet shop e outros. Ele concentra vendas no caixa, controle de estoque, financeiro, emissão fiscal (NFC-e), etiquetas, balança, PIX e relatórios gerenciais em uma única plataforma, com sincronização com a nuvem e gestão por inquilinos (tenants).",
+          "O Vorthal One é um sistema PDV/ERP completo que se adapta ao segmento do cliente — mercado, farmácia, roupas, hortifrúti, autopeças, construção, pet shop e outros. Ele concentra vendas no caixa (PDV), controle de estoque, financeiro, emissão fiscal (NFC-e), etiquetas, balança, PIX e relatórios gerenciais em uma única plataforma, com o desktop operando offline e sincronizando com a nuvem.",
       },
       {
         name: "Desafio",
         content:
-          "O aplicativo desktop em produção era construído em Electron, o que trazia limitações de performance, tamanho do instalador e segurança — além da dependência de uma cadeia de bibliotecas Node para a parte fiscal (assinatura de NFC-e) e do armazenamento de segredos sem proteção do sistema. O desafio foi reconstruir o sistema para o nicho de mercado do zero, garantindo paridade total de comportamento com o legado — incluindo o protocolo de sincronização com a web — sem quebrar o histórico de dados dos clientes em produção.",
+          "Construir um ecossistema que unisse um aplicativo desktop com integração fiscal real (assinatura de NFC-e, impressora térmica, balança e PIX) e uma plataforma web SaaS que centralizasse a gestão de todos os clientes (inquilinos), oferecesse acesso remoto aos dados e garantisse sincronização confiável entre as duas pontas — preservando a integridade e o histórico dos dados dos clientes em produção.",
       },
       {
         name: "Solução",
         content:
-          "Desenvolvi um ecossistema em três frentes: a versão web (Next.js), que serve como site institucional orientado a conversão com captura de leads e também como base SaaS com área do cliente e painel administrativo; o desktop em produção (Electron), com build por nicho, PDV, impressora térmica ESC/POS, NFC-e, PIX e servidor standalone de sincronização; e o rebuild do nicho mercado em Tauri v2 + Rust, backend 100% em Rust com rusqlite nativo, frontend React 19 e desenvolvimento guiado por testes em fases (F0–F9). Nesse rebuild, comprovei em um spike a assinatura A1 de NFC-e em Rust puro com paridade byte-a-byte com o legado, portei as migrações de banco, adotei keyring do sistema para segredos e importei o banco existente preservando UUIDs — entregando um aplicativo mais leve, rápido e seguro, pronto para Linux e Windows.",
+          "Desenvolvi o ecossistema em duas frentes: o aplicativo desktop em Tauri v2 + Rust, com backend 100% em Rust, banco SQLite nativo (rusqlite) e frontend em React 19 + Vite, cobrindo PDV, cadastros, estoque, compras, financeiro, relatórios, curva ABC, contábil e SPED — com stack fiscal em Rust (NFC-e/NFe com certificado A1, impressão térmica ESC/POS, etiquetas, balança, PIX), assinatura via Asaas, backups agendados e segredos protegidos no keyring do sistema; e a plataforma web em Next.js + Prisma + PostgreSQL, multi-tenant, com área do inquilino (dashboard, produtos, vendas, caixas, NFC-e, financeiro, fornecedores, clientes e configurações), API de sincronização (bootstrap, pull, push, reconcile e heartbeat), inteligência fiscal (IBPT, sugestões e auditoria) e painel administrativo com gestão de contas, clientes, contratos, propostas, cobranças e kanban.",
       },
     ],
   },
