@@ -3,7 +3,7 @@ export const projectDetails = [
     name: "Vorthal",
     slug: "vorthal",
     links: {
-      website: "",
+      website: "https://vorthal.com.br",
     },
     imageURL: [
       {
@@ -147,7 +147,7 @@ export const projectDetails = [
     name: "Mise en Place",
     slug: "mise-en-place",
     links: {
-      website: "",
+      website: "https://www.miseenplacemkt.com.br",
     },
     imageURL: [
       {
@@ -217,7 +217,7 @@ export const projectDetails = [
     name: "Quilombo Santa Rosa",
     slug: "quilombo-santa-rosa",
     links: {
-      website: "",
+      website: "https://www.quilombosantarosa.com.br/",
     },
     imageURL: [
       {
