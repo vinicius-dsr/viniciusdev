@@ -33,7 +33,22 @@ export const projectDetails = [
     date: "2026",
     local: "Brasil 🇧🇷",
     duration: "6 Meses",
-    techs: [],
+    techs: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "Supabase",
+      "NextAuth",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Tauri",
+      "Rust",
+      "SQLite",
+      "Vite",
+      "Vitest",
+    ],
     details: [
       {
         name: "Contexto",
@@ -104,6 +119,7 @@ export const projectDetails = [
       "Tailwind CSS",
       "ASAAS",
       "Nodemailer",
+      "React Email",
       "Baileys WhatsApp",
       "react-hook-form",
       "Zod",
@@ -176,6 +192,8 @@ export const projectDetails = [
       "Tailwind CSS",
       "Zod",
       "React Hook Form",
+      "Nodemailer",
+      "React Email",
     ],
     details: [
       {
@@ -241,7 +259,7 @@ export const projectDetails = [
     date: "2026",
     local: "Brasil 🇧🇷",
     duration: "5 Dias",
-    techs: [],
+    techs: ["Astro", "React Email", "Nodemailer"],
     details: [
       {
         name: "Contexto",
