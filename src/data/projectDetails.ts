@@ -104,7 +104,7 @@ export const projectDetails = [
       },
     ],
     description:
-      "Design e desenvolvimento de plataforma full stack de gestão jurídica.",
+      "Design e desenvolvimento de plataforma full stack de gestão jurídica, com site institucional orientado a conversão, contratação de serviços com pagamento online (PIX e cartão via Asaas), área do cliente com acompanhamento de casos e painel administrativo completo.",
     tag: "Full Stack",
     date: "2026",
     local: "Brasil 🇧🇷",
@@ -180,7 +180,7 @@ export const projectDetails = [
       },
     ],
     description:
-      "Design e desenvolvimento de landing page de alta conversão para agência de marketing gastronômico.",
+      "Design e desenvolvimento de landing page de alta conversão para agência de marketing gastronômico, com conteúdo centralizado em arquivo de dados, micro-interações de scroll reveal, formulário de contato funcional com envio de e-mail e integração com WhatsApp.",
     tag: "Front-end",
     date: "2026",
     local: "Brasil 🇧🇷",
@@ -254,7 +254,7 @@ export const projectDetails = [
       },
     ],
     description:
-      "Design e desenvolvimento de site institucional com AstroJS para uma comunidade quilombola.",
+      "Design e desenvolvimento de site institucional com AstroJS para uma comunidade quilombola, com galeria interativa, história em formato longform, loja com pedidos via WhatsApp e formulário de contato com envio real de e-mail.",
     tag: "Front-end",
     date: "2026",
     local: "Brasil 🇧🇷",
