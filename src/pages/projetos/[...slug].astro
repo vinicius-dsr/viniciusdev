@@ -1,9 +1,9 @@
 ---
-import ArrowDownRight from "../../components/icons/ArrowDownRight.astro";
 import ArrowLeft from "../../components/icons/ArrowLeft.astro";
 import ArrowUpRight from "../../components/icons/ArrowUpRight.astro";
 import { projectDetails } from "../../data/projectDetails";
 import Layout from "../../layouts/Layout.astro";
+import ProjectGallery from "../../components/ProjectGallery.astro";
 
 export async function getStaticPaths() {
   return projectDetails.map(
@@ -153,25 +153,14 @@ const {
           <p class="mb-5 text-justify">{details[2].content}</p>
         </div>
       </div>
-      <div
-        class="w-full h-px bg-gradient-to-r from-transparent via-text/25 to-transparent"
-      >
-      </div>
-      <div class="flex flex-col gap-9">
-        <div class="flex items-center justify-between">
-          <h2 class="md:text-3xl text-2xl font-medium">Resultando final</h2>
-          <ArrowDownRight class="w-8 h-auto" />
-        </div>
-        <div class="flex flex-col gap-8">
-          {
-            imageURL.slice(1).map((image) => {
-              return (
-                <img src={image.href} alt={image.name} class="rounded-xl" />
-              );
-            })
-          }
-        </div>
-      </div>
+      {
+        imageURL?.length > 1 && (
+          <div class="flex flex-col gap-4">
+            <h3 class="md:text-3xl text-2xl font-medium">Resultado final</h3>
+            <ProjectGallery images={imageURL.slice(1)} />
+          </div>
+        )
+      }
     </div>
   </main>
 </Layout>

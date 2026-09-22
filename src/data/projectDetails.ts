@@ -11,6 +11,22 @@ export const projectDetails = [
         href: "/banner-vorthal.png",
       },
       {
+        name: "Dashboard do Tenant Vorthal",
+        href: "/dashboard-tenant.png",
+      },
+      {
+        name: "Tela de gerenciamento de produtos no sistema web",
+        href: "/produtos-web.png",
+      },
+      {
+        name: "Tela de gerenciamento de vendas no sistema web",
+        href: "/vendas-web.png",
+      },
+      {
+        name: "Tela de gerenciamento de NFC-E no sistema web",
+        href: "/nf-web.png",
+      },
+      {
         name: "Inicial do Sistema Vorthal",
         href: "/sistema.png",
       },
@@ -20,15 +36,27 @@ export const projectDetails = [
       },
       {
         name: "Cadastro de Produto Vorthal",
-        href: "/cadastro-produtos.png",
+        href: "/produtos-desktop.png",
       },
       {
-        name: "Dashboard do Tenant Vorthal",
-        href: "/dashboard-tenant.png",
+        name: "Tela de relatórios do sistema desktop",
+        href: "/relatorios-desktop.png",
+      },
+      {
+        name: "Tela de gerenciamento de estoque do sistema desktop",
+        href: "/estoque-desktop.png",
+      },
+      {
+        name: "Tela de gerenciamento de NFC-E do sistema desktop",
+        href: "/nfce-desktop.png",
+      },
+      {
+        name: "Pagamento via pix pela tela de PDV no sistema desktop",
+        href: "/pix-pagamento.png",
       },
     ],
     description:
-      "Sistema PDV/ERP multi-segmento completo, com aplicativo desktop (Tauri + Rust) e plataforma web SaaS sincronizada com a nuvem.",
+      "Sistema PDV/ERP para mercados, hortifrutis, lojas e serviços: venda no caixa, controle o estoque e emita a nota fiscal em um só lugar — com aplicativo desktop offline-first (Tauri + Rust) e painel web SaaS sincronizado com a nuvem.",
     tag: "Full Stack",
     date: "2026",
     local: "Brasil 🇧🇷",
@@ -53,17 +81,17 @@ export const projectDetails = [
       {
         name: "Contexto",
         content:
-          "O Vorthal One é um sistema PDV/ERP completo que se adapta ao segmento do cliente — mercado, farmácia, roupas, hortifrúti, autopeças, construção, pet shop e outros. Ele concentra vendas no caixa (PDV), controle de estoque, financeiro, emissão fiscal (NFC-e), etiquetas, balança, PIX e relatórios gerenciais em uma única plataforma, com o desktop operando offline e sincronizando com a nuvem.",
+          "O Vorthal One é um sistema de gestão completo para o comércio — mercados, hortifrutis, lojas de varejo e serviços — que concentra frente de caixa (PDV), controle de estoque com lotes e validade, financeiro, emissão fiscal (NFC-e/NF-e), etiquetas, balança, PIX e relatórios gerenciais em uma única plataforma, sem planilhas e sem complicação. O programa roda instalado na loja, funcionando mesmo sem internet, e sincroniza tudo com a nuvem: o painel web permite acompanhar vendas, estoque, notas e caixas de qualquer lugar, com backup seguro dos dados.",
       },
       {
         name: "Desafio",
         content:
-          "Construir um ecossistema que unisse um aplicativo desktop com integração fiscal real (assinatura de NFC-e, impressora térmica, balança e PIX) e uma plataforma web SaaS que centralizasse a gestão de todos os clientes (inquilinos), oferecesse acesso remoto aos dados e garantisse sincronização confiável entre as duas pontas — preservando a integridade e o histórico dos dados dos clientes em produção.",
+          "Tirar o varejista da rotina de fechar o caixa no caderno e organizar planilhas, entregando uma operação crítica e confiável no dia a dia: frente de caixa rápida com leitor de código de barras e balança, recebimento via PIX, emissão fiscal real (NFC-e/NF-e com certificado digital A1, contingência offline e reenvio automático à SEFAZ) e impressão na térmica — tudo funcionando mesmo sem internet. Ao mesmo tempo, era preciso conectar o desktop a uma plataforma web SaaS multi-tenant com sincronização segura e bidirecional entre as duas pontas, preservando a integridade e o histórico dos dados dos clientes em produção.",
       },
       {
         name: "Solução",
         content:
-          "Desenvolvi o ecossistema em duas frentes: o aplicativo desktop em Tauri v2 + Rust, com backend 100% em Rust, banco SQLite nativo (rusqlite) e frontend em React 19 + Vite, cobrindo PDV, cadastros, estoque, compras, financeiro, relatórios, curva ABC, contábil e SPED — com stack fiscal em Rust (NFC-e/NFe com certificado A1, impressão térmica ESC/POS, etiquetas, balança, PIX), assinatura via Asaas, backups agendados e segredos protegidos no keyring do sistema; e a plataforma web em Next.js + Prisma + PostgreSQL, multi-tenant, com área do inquilino (dashboard, produtos, vendas, caixas, NFC-e, financeiro, fornecedores, clientes e configurações), API de sincronização (bootstrap, pull, push, reconcile e heartbeat), inteligência fiscal (IBPT, sugestões e auditoria) e painel administrativo com gestão de contas, clientes, contratos, propostas, cobranças e kanban.",
+          "Desenvolvi o ecossistema em duas frentes: o aplicativo desktop em Tauri v2 + Rust, com backend 100% em Rust, banco SQLite nativo (rusqlite) e frontend em React 19 + Vite, cobrindo PDV, cadastros, estoque com lotes e validade, compras com importação de NF-e, financeiro, relatórios gerenciais, curva ABC, contábil e SPED — com stack fiscal em Rust (NFC-e/NF-e com certificado A1 e contingência offline, impressão térmica ESC/POS, etiquetas, balança e PIX), transações PIX via Asaas, backups agendados e segredos protegidos no keyring do sistema. E a plataforma web em Next.js + Prisma + PostgreSQL, multi-tenant, com área do inquilino (dashboard, produtos, vendas, caixas, NFC-e/NF-e, financeiro, fornecedores, clientes e configurações), API de sincronização (bootstrap, pull, push, reconcile e heartbeat), inteligência fiscal (IBPT, sugestões e auditoria) e painel administrativo com gestão de contas, clientes, contratos, propostas, cobranças e kanban — completando o modelo de negócio com trial de 7 dias, planos mensal/anual a partir de R$ 180/mês e suporte 24/7.",
       },
     ],
   },

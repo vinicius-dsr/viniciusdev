@@ -1,0 +1,181 @@
+---
+import ArrowUpRight from "./icons/ArrowUpRight.astro";
+import Chevron from "./icons/Chevron.astro";
+import Close from "./icons/Close.astro";
+
+interface GalleryImage {
+  name: string;
+  href: string;
+}
+
+interface Props {
+  images: GalleryImage[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-6" data-gallery>
+  {
+    images.map((image, index) => (
+      <button
+        type="button"
+        data-open={index}
+        aria-label={`Ver ${image.name} em tela cheia`}
+        class="group relative aspect-video w-full cursor-zoom-in overflow-hidden rounded-xl border border-muted/20"
+      >
+        <img
+          src={image.href}
+          alt={image.name}
+          class="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+        />
+        <span
+          class="absolute inset-0 flex items-center justify-center bg-background/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        >
+          <span
+            class="bg-muted/75 p-4 rounded-full text-sm transition-transform duration-300 scale-90 group-hover:scale-100"
+          >
+            <ArrowUpRight class="w-8 h-auto" />
+          </span>
+        </span>
+      </button>
+    ))
+  }
+</div>
+
+<!-- Lightbox -->
+<div
+  data-lightbox
+  role="dialog"
+  aria-modal="true"
+  aria-label="Visualização em tela cheia"
+  class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 invisible opacity-0 transition-opacity duration-300"
+>
+  <button
+    type="button"
+    data-lightbox-close
+    aria-label="Fechar"
+    class="absolute top-5 right-5 z-10 flex size-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+  >
+    <Close class="size-5" />
+  </button>
+
+  <button
+    type="button"
+    data-lightbox-prev
+    aria-label="Imagem anterior"
+    class="absolute left-3 md:left-6 z-10 flex size-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 md:size-11"
+  >
+    <Chevron class="size-6 rotate-90" />
+  </button>
+  <button
+    type="button"
+    data-lightbox-next
+    aria-label="Próxima imagem"
+    class="absolute right-3 md:right-6 z-10 flex size-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 md:size-11"
+  >
+    <Chevron class="size-6 -rotate-90" />
+  </button>
+
+  <div
+    class="relative flex h-[78vh] w-full max-w-5xl items-center justify-center px-12 pt-10 pb-24 sm:px-16"
+    data-lightbox-stage
+  >
+    <img
+      data-lightbox-img
+      src={images[0]?.href}
+      alt={images[0]?.name}
+      class="h-full w-full object-contain"
+    />
+    <div
+      class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent px-4 pt-8 pb-4 text-center sm:px-6 sm:pt-16 sm:pb-5"
+    >
+      <p class="text-sm font-medium text-white" data-lightbox-title>
+        {images[0]?.name}
+      </p>
+      <p
+        class="mx-auto mt-1 max-w-xl text-xs text-white/70"
+        data-lightbox-counter
+      >
+        1 / {images.length}
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  [data-lightbox-prev].is-disabled,
+  [data-lightbox-next].is-disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+</style>
+
+<script define:vars={{ images }}>
+  const gallery = document.querySelector("[data-gallery]");
+  const cards = gallery.querySelectorAll("[data-open]");
+  const lightbox = gallery.parentElement.querySelector("[data-lightbox]");
+  const img = lightbox.querySelector("[data-lightbox-img]");
+  const title = lightbox.querySelector("[data-lightbox-title]");
+  const counter = lightbox.querySelector("[data-lightbox-counter]");
+  const prev = lightbox.querySelector("[data-lightbox-prev]");
+  const next = lightbox.querySelector("[data-lightbox-next]");
+  const closeBtn = lightbox.querySelector("[data-lightbox-close]");
+
+  let current = 0;
+
+  function render() {
+    const image = images[current];
+    img.src = image.href;
+    img.alt = image.name;
+    title.textContent = image.name;
+    counter.textContent = current + 1 + " / " + images.length;
+    prev.classList.toggle("is-disabled", current === 0);
+    next.classList.toggle("is-disabled", current === images.length - 1);
+  }
+
+  function open(at) {
+    current = Math.max(0, Math.min(at, images.length - 1));
+    render();
+    lightbox.classList.remove("invisible", "opacity-0");
+    document.body.style.overflow = "hidden";
+  }
+
+  function close() {
+    lightbox.classList.add("invisible", "opacity-0");
+    document.body.style.overflow = "";
+  }
+
+  function go(delta) {
+    const index = Math.max(0, Math.min(current + delta, images.length - 1));
+    if (index !== current) {
+      current = index;
+      render();
+    }
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => open(Number(card.dataset.open)));
+  });
+
+  closeBtn.addEventListener("click", close);
+  prev.addEventListener("click", (event) => {
+    event.stopPropagation();
+    go(-1);
+  });
+  next.addEventListener("click", (event) => {
+    event.stopPropagation();
+    go(1);
+  });
+
+  const stage = lightbox.querySelector("[data-lightbox-stage]");
+  stage.addEventListener("click", (event) => event.stopPropagation());
+  lightbox.addEventListener("click", close);
+
+  document.addEventListener("keydown", (event) => {
+    if (lightbox.classList.contains("invisible")) return;
+    if (event.key === "Escape") close();
+    if (event.key === "ArrowLeft") go(-1);
+    if (event.key === "ArrowRight") go(1);
+  });
+</script>
