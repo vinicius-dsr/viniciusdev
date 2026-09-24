@@ -56,7 +56,7 @@ export const projectDetails = [
       },
     ],
     description:
-      "Sistema PDV/ERP para mercados, hortifrutis, lojas e serviços: venda no caixa, controle o estoque e emita a nota fiscal em um só lugar — com aplicativo desktop offline-first (Tauri + Rust) e painel web SaaS sincronizado com a nuvem.",
+      "Sistema PDV/ERP para mercados: venda no caixa, controle o estoque e emita a nota fiscal em um só lugar — com aplicativo desktop offline-first e painel web sincronizado em nuvem.",
     tag: "Full Stack",
     date: "2026",
     local: "Brasil 🇧🇷",
