@@ -51,6 +51,8 @@ const {
   techs,
   details,
 } = Astro.props;
+
+const marqueeDuration = `${Math.max(techs?.length ?? 1, 1) * 1.8}s`;
 ---
 
 <Layout title={name}>
@@ -128,14 +130,33 @@ const {
         techs?.length > 0 && (
           <div class="flex flex-col gap-4">
             <h3 class="md:text-3xl text-2xl font-medium">Tecnologias</h3>
-            <div class="flex flex-wrap gap-2">
-              {
-                techs.map((tech) => (
-                  <span class="bg-muted/20 px-4 py-2 rounded-full text-sm">
-                    {tech}
-                  </span>
-                ))
-              }
+            <div class="marquee overflow-hidden" data-marquee>
+              <div
+                class="flex w-max items-center"
+                data-marquee-track
+                style={{ "--marquee-duration": marqueeDuration }}
+              >
+                {
+                  techs.map((tech) => (
+                    <span
+                      class="shrink-0 bg-muted/20 px-4 py-2 rounded-full text-sm mx-1"
+                    >
+                      {tech}
+                    </span>
+                  ))
+                }
+                <div class="flex items-center" aria-hidden="true">
+                  {
+                    techs.map((tech) => (
+                      <span
+                        class="shrink-0 bg-muted/20 px-4 py-2 rounded-full text-sm mx-1"
+                      >
+                        {tech}
+                      </span>
+                    ))
+                  }
+                </div>
+              </div>
             </div>
           </div>
         )
@@ -164,3 +185,40 @@ const {
     </div>
   </main>
 </Layout>
+
+<style>
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  [data-marquee] {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 12%,
+      black 88%,
+      transparent
+    );
+  }
+
+  [data-marquee-track] {
+    animation: marquee-scroll var(--marquee-duration, 24s) linear infinite;
+    will-change: transform;
+  }
+
+  [data-marquee]:hover [data-marquee-track],
+  [data-marquee]:focus-within [data-marquee-track] {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-marquee-track] {
+      animation: none;
+    }
+  }
+</style>
